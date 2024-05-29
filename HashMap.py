@@ -1,12 +1,22 @@
 def find_pair(nums, target):
+    # Initialize an empty dictionary to store the numbers in the array as keys and their indices as values
     idx_map = {}
+
+    # Iterate over the array with both index and value
     for i, num in enumerate(nums):
+        # Calculate the number required to reach the target by subtracting the current number from the target
         required_num = target - num
+
+        # If the required number is already in the dictionary, that means we have found a pair that adds up to the target
         if required_num in idx_map:
+            # Return the indices of the pair in the order they were encountered in the array
             return [i, idx_map[required_num]]
         else:
+            # If the required number is not in the dictionary, add the current number and its index to the dictionary
             print(f"Adding to hash table: key:{num}, value: {i}")  # print statement added
             idx_map[num] = i
+
+    # If no pair is found that adds up to the target, return None
     return None
 
 
